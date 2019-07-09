@@ -1,0 +1,33 @@
+syntax="proto3";
+
+package user;
+
+service Department {
+    rpc GetDepartmentById(DepartmentRequest) returns(DepartmentReply){}
+    rpc GetDepartmentList(DepartmentListRequest) returns (DepartmentListReply) {}
+}
+
+// department 请求数据
+message DepartmentRequest {
+    string Id = 1;
+}
+
+// department 响应数据
+message DepartmentReply {
+    string Id = 1;
+    string Name = 2;
+    int32 Order = 3;
+    string Phone = 4;
+    string CreatedAt = 5;
+}
+
+// department list request
+message DepartmentListRequest {
+    string Order = 1;
+    string CreatedAt = 2;
+}
+
+// department list response
+message DepartmentListReply {
+    repeated DepartmentReply list = 1;
+}
